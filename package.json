@@ -1,0 +1,25 @@
+{
+  "name": "react_movie_search",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }, 
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tanosimboangy/Search_movie.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tanosimboangy/Search_movie/issues"
+  },
+  "homepage": "https://github.com/Tanosimboangy/Search_movie#readme",
+  "dependencies": {
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  },"browserslist": [
+    "last 1 chrome versions"
+  ]
+}
