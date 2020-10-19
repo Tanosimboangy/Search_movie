@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import MovieCard from "./MovieCard";
 
 export default function SearchMovies() {
     // states- input query, movies
@@ -21,11 +22,19 @@ export default function SearchMovies() {
         
     }
     return (
-        <form className="form" onSubmit={searchMovies}>
-            <label htmlFor="query" className="label">Movie Name</label>
-            <input type="text" className="input" name="query" placeholder="i.e.Jurracic Park" value={query} onChange={(e) => setQuery(e.target.value)}/>
-            <button type="submit" className="button">Search</button>
-        </form>
+        <>
+            <form className="form" onSubmit={searchMovies}>
+                <label htmlFor="query" className="label">Movie Name</label>
+                <input type="text" className="input" name="query" placeholder="i.e.Jurracic Park" value={query} onChange={(e) => setQuery(e.target.value)}/>
+                <button type="submit" className="button">Search</button>
+            </form>
+            <div className="card-list">
+                {movies.filter(movie => movie.poster_path).map(movie => {
+                    return (<MovieCard  key={movie.id} movie={movie}/>)
+                }
+                )}
+            </div>
+        </>
     )
 }
 

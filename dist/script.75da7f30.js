@@ -28285,7 +28285,35 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"components/SerchMovies.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"components/MovieCard.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = MovieCard;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function MovieCard(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "card",
+    key: props.movie.id
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    className: "card--image",
+    src: `https://image.tmdb.org/t/p/w185_and_h278_bestv2/${props.movie.poster_path}`,
+    alt: props.movie.title + 'poster'
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "card--content"
+  }, /*#__PURE__*/_react.default.createElement("h3", {
+    className: "card--title"
+  }, props.movie.title), /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("small", null, "RELEASE DATE: ", props.movie.release_date)), /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("small", null, "RATING: ", props.movie.vote_average)), /*#__PURE__*/_react.default.createElement("p", {
+    className: "card--desc"
+  }, props.movie.overview)));
+}
+},{"react":"node_modules/react/index.js"}],"components/SerchMovies.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28294,6 +28322,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = SearchMovies;
 
 var _react = _interopRequireWildcard(require("react"));
+
+var _MovieCard = _interopRequireDefault(require("./MovieCard"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -28318,7 +28350,7 @@ function SearchMovies() {
     }
   };
 
-  return /*#__PURE__*/_react.default.createElement("form", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("form", {
     className: "form",
     onSubmit: searchMovies
   }, /*#__PURE__*/_react.default.createElement("label", {
@@ -28334,9 +28366,16 @@ function SearchMovies() {
   }), /*#__PURE__*/_react.default.createElement("button", {
     type: "submit",
     className: "button"
-  }, "Search"));
+  }, "Search")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "card-list"
+  }, movies.filter(movie => movie.poster_path).map(movie => {
+    return /*#__PURE__*/_react.default.createElement(_MovieCard.default, {
+      key: movie.id,
+      movie: movie
+    });
+  })));
 }
-},{"react":"node_modules/react/index.js"}],"script.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./MovieCard":"components/MovieCard.js"}],"script.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -28388,7 +28427,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59849" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63639" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
